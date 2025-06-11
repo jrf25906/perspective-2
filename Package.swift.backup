@@ -1,0 +1,31 @@
+// swift-tools-version:5.5
+import PackageDescription
+
+let package = Package(
+    name: "perspective",
+    platforms: [
+        .iOS(.v16)
+    ],
+    products: [
+        .library(
+            name: "perspective",
+            targets: ["perspective"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.2.0"),
+        .package(url: "https://github.com/google/GoogleSignIn-iOS.git", from: "7.0.0")
+    ],
+    targets: [
+        .target(
+            name: "perspective",
+            dependencies: [
+                "KeychainAccess",
+                .product(name: "GoogleSignIn", package: "GoogleSignIn-iOS")
+            ],
+            path: "perspective"),
+        .testTarget(
+            name: "perspectiveTests",
+            dependencies: ["perspective"],
+            path: "perspectiveTests"),
+    ]
+) 
