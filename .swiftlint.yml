@@ -1,0 +1,10 @@
+opt_in_rules:
+  - anyobject_protocol
+  - closure_spacing
+  - collection_alignment
+
+excluded:
+  - Carthage
+  - Pods
+
+line_length: 120
