@@ -6,11 +6,21 @@ A cross-platform mobile application for perspective sharing and collaboration.
 
 - `android/` - Android native application
 - `ios/` - iOS native application (active project in `ios/Perspective`)
-- `backend/` - Node.js backend API server
+- `backend/` - Node.js backend API server (now vendored in repository)
 - `shared/` - Shared assets and resources
 - `docs/` - Project documentation
 
 ## Getting Started
+
+To start the backend locally:
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Run tests with `npm test`.
 
 See the [SETUP.md](docs/SETUP.md) file for detailed setup instructions.
 
