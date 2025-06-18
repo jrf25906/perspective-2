@@ -8,7 +8,7 @@ struct WelcomeView: View {
         ZStack {
             VideoBackgroundView(videoName: "welcome_bg", videoType: "mp4")
                 .ignoresSafeArea()
-                .allowsHitTesting(false) // Don't intercept touch events
+                .allowsHitTesting(false)
             
             VStack {
                 Spacer()

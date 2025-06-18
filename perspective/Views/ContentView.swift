@@ -11,15 +11,9 @@ struct ContentView: View {
         Group {
             if showWelcome {
                 WelcomeView {
-                    print("🔄 Continue button tapped - setting showWelcome to false")
                     withAnimation {
                         showWelcome = false
                     }
-                    print("🔄 showWelcome is now: \(showWelcome)")
-                    print("🔄 isAuthenticated is: \(apiService.isAuthenticated)")
-                }
-                .onAppear {
-                    print("🔄 WelcomeView appeared")
                 }
             } else if apiService.isAuthenticated {
                 ZStack {
@@ -50,9 +44,6 @@ struct ContentView: View {
                 }
             } else {
                 AuthenticationView()
-                    .onAppear {
-                        print("🔄 AuthenticationView appeared - showWelcome: \(showWelcome), isAuthenticated: \(apiService.isAuthenticated)")
-                    }
             }
         }
         .onAppear {
