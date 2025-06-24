@@ -5,13 +5,26 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+// CORS configuration
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
 // Mock authentication endpoints
-app.post('/api/auth/login', (req, res) => {
+app.post('/api/v1/auth/login', (req, res) => {
   const { email, password } = req.body;
   
   // Mock successful login
@@ -52,7 +65,7 @@ app.post('/api/auth/login', (req, res) => {
   }
 });
 
-app.post('/api/auth/register', (req, res) => {
+app.post('/api/v1/auth/register', (req, res) => {
   const { email, password, username, firstName, lastName } = req.body;
   
   // Mock successful registration
@@ -94,7 +107,7 @@ app.post('/api/auth/register', (req, res) => {
 });
 
 // Mock profile endpoint
-app.get('/api/profile', (req, res) => {
+app.get('/api/v1/profile', (req, res) => {
   res.json({
     success: true,
     data: {
