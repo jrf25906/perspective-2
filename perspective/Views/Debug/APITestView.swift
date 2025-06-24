@@ -26,7 +26,7 @@ struct APITestView: View {
                                 .foregroundColor(.green)
                             #endif
                             
-                            Text("Base URL: \(ProcessInfo.processInfo.environment["API_BASE_URL"] ?? "http://localhost:3000/api")")
+                            Text("Base URL: \(ProcessInfo.processInfo.environment["API_BASE_URL"] ?? Config.apiBaseURL.replacingOccurrences(of: "/api/v1", with: "/api"))")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -152,7 +152,7 @@ struct APITestView: View {
     }
     
     private func testBackendReachability() async {
-        let baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? "http://localhost:3000/api"
+        let baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? Config.apiBaseURL.replacingOccurrences(of: "/api/v1", with: "/api")
         let healthCheckURL = baseURL.replacingOccurrences(of: "/api", with: "/health")
         
         do {
@@ -205,7 +205,7 @@ struct APITestView: View {
         
         do {
             // Create a simple test request
-            let baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? "http://localhost:3000/api"
+            let baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? Config.apiBaseURL.replacingOccurrences(of: "/api/v1", with: "/api")
             guard let url = URL(string: "\(baseURL)/auth/login") else {
                 throw APIError.invalidURL
             }

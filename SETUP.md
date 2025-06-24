@@ -2,6 +2,14 @@
 
 This guide will help you set up the Perspective app development environment.
 
+## Production Backend
+
+The backend is deployed on Railway and accessible at:
+- **Production API**: https://backend-production-d218.up.railway.app/api/v1
+- **Health Check**: https://backend-production-d218.up.railway.app/health
+
+No additional setup is required to use the production backend. The iOS app is configured to connect to this endpoint automatically.
+
 ## Prerequisites
 
 - Node.js (v18.0.0 or higher)
@@ -10,7 +18,9 @@ This guide will help you set up the Perspective app development environment.
 - Redis (optional, for caching)
 - Docker and Docker Compose (optional, for containerized development)
 
-## Backend Setup
+## Local Backend Setup (Development Only)
+
+**Note**: The following setup is only required if you want to run the backend locally for development. The production backend is already deployed on Railway.
 
 ### 1. Environment Configuration
 
@@ -87,7 +97,9 @@ npm run seed
 npm run dev
 ```
 
-The backend server will start on `http://localhost:3000` (or the port specified in your `.env` file).
+The backend server will start on `http://localhost:5000` (or the port specified in your `.env` file).
+
+**Note**: To use the local backend with the iOS app, you'll need to update the `DevelopmentConfig` in `perspective/Core/AppEnvironment.swift` to point to your local server.
 
 ## Environment Variables Guide
 

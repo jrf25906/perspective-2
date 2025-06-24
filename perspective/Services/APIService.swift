@@ -16,13 +16,7 @@ public final class APIService: ObservableObject, APIServiceProtocol {
     
     private init() {
         // Configure base URL based on environment
-        #if targetEnvironment(simulator)
-        // Use localhost for simulator - more reliable than 127.0.0.1
-        self.baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? "http://localhost:3000/api"
-        #else
-        // Use actual server URL for device
-        self.baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? "http://localhost:3000/api"
-        #endif
+        self.baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? Config.apiBaseURL.replacingOccurrences(of: "/api/v1", with: "/api")
         
         print("🔧 APIService initialized with base URL: \(self.baseURL)")
         

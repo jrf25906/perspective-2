@@ -118,7 +118,7 @@ struct DevelopmentConfig: EnvironmentConfigurable {
 
 // MARK: - Staging Configuration
 struct StagingConfig: EnvironmentConfigurable {
-    let apiBaseURL = "https://staging-api.perspective.app/api/v1"
+    let apiBaseURL = "https://backend-production-d218.up.railway.app/api/v1"
     let isDebugMode = true
     let apiTimeout: TimeInterval = 30
     let logLevel = LogLevel.debug
@@ -127,7 +127,7 @@ struct StagingConfig: EnvironmentConfigurable {
 
 // MARK: - Production Configuration
 struct ProductionConfig: EnvironmentConfigurable {
-    let apiBaseURL = "https://api.perspective.app/api/v1"
+    let apiBaseURL = "https://backend-production-d218.up.railway.app/api/v1"
     let isDebugMode = false
     let apiTimeout: TimeInterval = 15
     let logLevel = LogLevel.warning
